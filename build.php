@@ -3,6 +3,7 @@
 
 namespace ZxBD;
 
+use Michelf\Markdown;
 use Twig_Environment;
 use Twig_Extension_Debug;
 use Twig_Loader_Filesystem;
@@ -89,6 +90,9 @@ while ($file = readdir($dh)) {
         }
     }
 
+    // Parse the page content into markdown
+    $markdown = Markdown::defaultTransform($contents);
+
     // Determine the possible templates
     $templates = [
         sprintf('%s.twig', $meta['type']),
@@ -98,7 +102,7 @@ while ($file = readdir($dh)) {
     // Render the twig template
     $output = $twig->render('_init.twig', [
         'meta'      => $meta,
-        'content'   => $contents,
+        'content'   => $markdown,
         'templates' => $templates,
     ]);
 
