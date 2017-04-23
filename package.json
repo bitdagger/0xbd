@@ -6,6 +6,7 @@
     "production": "cross-env NODE_ENV=production webpack --hide-modules"
   },
   "devDependencies": {
+    "bulma": "^0.4.0",
     "laravel-mix": "^0.11.3",
     "lodash": "^4.17.4"
   }

@@ -12,6 +12,7 @@ use Twig_SimpleFunction;
 printf("Compiling static pages...\n\n");
 $timer_start = microtime(true);
 
+
 /*
  * -----------------------------------------------------------------------------
  * Setup the autoloader
@@ -23,6 +24,7 @@ if (!file_exists($autoloder = sprintf('%s/vendor/autoload.php', __DIR__))) {
 }
 require_once $autoloder;
 unset($autoloder);
+
 
 /*
  * -----------------------------------------------------------------------------
@@ -41,6 +43,30 @@ $twig = new Twig_Environment($loader, [
 ]);
 $twig->addExtension(new Twig_Extension_Debug());
 unset($loader);
+$twig->addFunction(new Twig_SimpleFunction('asset', sprintf('%s\\asset', __NAMESPACE__)));
+
+
+/*
+ * -----------------------------------------------------------------------------
+ * Asset path function
+ * -----------------------------------------------------------------------------
+ */
+function asset($path)
+{
+    $manifest_file = sprintf('%s/public/dist/mix-manifest.json', __DIR__);
+    if (file_exists($manifest_file)) {
+        $manifest = json_decode(file_get_contents($manifest_file), true);
+        foreach ($manifest as $key => $value) {
+            unset($manifest[$key]);
+            $manifest[ltrim($key, '/')] = ltrim($value, '/');
+        }
+        if (isset($manifest[$path])) {
+            $path = $manifest[$path];
+        }
+    }
+
+    return sprintf('/dist/%s', $path);
+}
 
 
 /*

@@ -1,10 +1,85 @@
 <!doctype html>
-<html>
+<html class="no-js" lang="en">
     <head>
+        <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ meta.title }}</title>
+
+        <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
-        <h1>Success!</h1>
-        {% block main %}{% endblock %}
+        <header class="section hero is-primary is-bold is-small" role="banner">
+            <div class="hero-head">
+                <nav class="nav has-shadow" role="navigation">
+                    <div class="container">
+                        <div class="nav-left">
+                            <a href="/" class="nav-item">
+                                LOGO
+                            </a>
+                        </div>
+                        <span class="nav-toggle">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                        <div class="nav-right nav-menu">
+                            <a href="/" class="nav-item is-active is-tab">
+                                Home
+                            </a>
+                            <a href="/" class="nav-item is-tab">
+                                Blog
+                            </a>
+                            <a href="/" class="nav-item is-tab">
+                                Projects
+                            </a>
+                            <a href="https://github.com/bitdagger" class="nav-item">
+                                <i class="fa fa-github"></i>
+                            </a>
+                            <a href="https://twitter.com/bitdagger" class="nav-item">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                        Ramblings of  Programmer
+                    </h1>
+                    <h2 class="subtitle">
+                        Tagline
+                    </h2>
+                </div>
+            </div>
+        </header>
+
+        <main class="section">
+            <div class="container content">
+                {% block main %}{% endblock %}
+            </div>
+        </main>
+
+        <footer class="footer section">
+            <div class="container">
+                <div class="content has-text-centered">
+                    <p>
+                        &copy; {{ 'now'|date('Y') }} <a href="mailto:webmaster@0xbd.net">Matt Fields</a>
+                    </p>
+                    <p>
+                        <a class="icon" href="https://github.com/bitdagger">
+                            <i class="fa fa-github"></i>
+                        </a>
+                        <a class="icon" href="https://twitter.com/bitdagger">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+        <script src="{{ asset('js/main.js') }}"></script>
     </body>
 </html>
