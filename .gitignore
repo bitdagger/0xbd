@@ -13,6 +13,7 @@ $RECYCLE.BIN/
 # Generated Content
 /node_modules
 /public/*
+/vendor
 
 # Exceptions
 !.gitignore
