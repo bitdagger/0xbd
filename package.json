@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack --progress --hide-modules",
+    "watch": "cross-env NODE_ENV=development webpack --watch --progress --hide-modules",
+    "production": "cross-env NODE_ENV=production webpack --hide-modules"
+  },
+  "devDependencies": {
+    "laravel-mix": "^0.11.3",
+    "lodash": "^4.17.4"
+  }
+}
