@@ -14,7 +14,9 @@ else
 endif
 
 build : clean
+	@echo "Compiling static assets..."
 	@npm run $(ENVIRONMENT)
+	@php build.php
 
 clean :
 	@rm -Rf public/*

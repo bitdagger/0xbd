@@ -14,6 +14,9 @@ let mix = require('laravel-mix');
 // Config
 (mix
     .setPublicPath('public/dist')
+    .options({
+        clearConsole: false
+    })
 );
 if (mix.config.inProduction) {
     (mix
